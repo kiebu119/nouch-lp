@@ -93,7 +93,7 @@
         img.alt = 'nouch ゴーグル ' + NAME[c];
         img.classList.remove('is-swap');
       };
-      next.src = 'assets/img/product-' + c + '.png';
+      next.src = 'product-' + c + '.png';
 
       dl.push({ event: 'select_color', color: c });
     });
