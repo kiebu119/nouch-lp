@@ -309,7 +309,7 @@ table{border-collapse:collapse;width:100%}
 .product{padding-block:52px;background:var(--paper)}
 .product .h2{margin-bottom:20px}
 .product__photo{margin:0 0 20px;display:flex;justify-content:center}
-.product__worn{margin:0 0 26px}
+.product__worn{margin:0 0 28px}
 .product__worn img{width:100%;border-radius:var(--r)}
 .product__photo img{
   width:100%;max-width:300px;height:auto;
@@ -329,7 +329,7 @@ table{border-collapse:collapse;width:100%}
 .fit__label strong{font-weight:700}
 
 /* swatches */
-.swatches{display:flex;gap:16px;justify-content:center;margin-bottom:28px}
+.swatches{display:flex;gap:16px;justify-content:center;margin-bottom:24px}
 .swatch{
   display:flex;flex-direction:column;align-items:center;gap:8px;
   font-size:11px;color:var(--ink-muted);padding:2px;
@@ -503,9 +503,9 @@ table{border-collapse:collapse;width:100%}
   .product .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;align-items:start}
   .product .label,.product .h2{grid-column:1;justify-self:start}
   .product__photo{grid-column:1;margin:0}
-  .product__worn{grid-column:1;margin-top:20px}
+  .product__worn{grid-column:1;margin:0}
   .product__photo img{max-width:100%}
-  .swatches{grid-column:1;justify-content:flex-start;margin-top:24px}
+  .swatches{grid-column:1;justify-content:flex-start;margin:20px 0 24px}
   .fits{grid-column:2;grid-row:1 / span 4;margin:0}
   .price{grid-column:1 / -1;margin-top:48px;flex-direction:row;align-items:center;gap:40px;padding:32px}
   .price__num{flex:0 0 auto}
