@@ -104,6 +104,22 @@ table{border-collapse:collapse;width:100%}
   html{scroll-behavior:auto}
 }
 
+
+/* ---------- focus (keyboard) ---------- */
+:where(a,button,summary,[tabindex]):focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+}
+.btn--white:focus-visible,.h2--light ~ * .btn:focus-visible,
+.solution :focus-visible,.final :focus-visible,.voice :focus-visible,.footer :focus-visible{
+  outline-color:var(--accent-light);
+}
+.swatch:hover span{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--line)}
+.swatch.is-on:hover span{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--accent)}
+.qa summary:hover{background:#FBFAF9}
+.footer__nav a:focus-visible{outline-color:var(--accent-light)}
+
 /* ==========================================================
    header
    ========================================================== */
@@ -415,7 +431,8 @@ table{border-collapse:collapse;width:100%}
 .footer{background:var(--deep);color:rgba(255,255,255,.72);padding-block:44px 36px}
 .footer .wrap{display:flex;flex-direction:column;gap:20px}
 .footer__nav{display:flex;flex-wrap:wrap;gap:10px 20px}
-.footer__nav a{font-size:12px;color:rgba(255,255,255,.62);text-decoration:none}
+.footer__nav a,.footer__na{font-size:12px;color:rgba(255,255,255,.62);text-decoration:none}
+.footer__na{color:rgba(255,255,255,.34);cursor:default}
 .footer__nav a:hover{color:var(--white)}
 .footer__copy{font-size:11px;line-height:1.8;color:rgba(255,255,255,.42)}
 
