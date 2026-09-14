@@ -141,18 +141,19 @@ table{border-collapse:collapse;width:100%}
 .fv__bg--still{opacity:0;object-position:center 50%;transition:opacity .9s ease}
 .fv.is-still .fv__bg--still{opacity:1}
 .fv__cap{
-  position:absolute;top:0;right:0;z-index:2;
-  padding:14px var(--pad);
-  font-size:12px;line-height:1.7;color:rgba(255,255,255,.82);
-  text-shadow:0 1px 12px rgba(0,0,0,.6);
+  position:absolute;top:0;left:0;right:0;z-index:2;
+  padding:22px var(--pad);text-align:center;
+  font-size:15px;font-weight:500;line-height:1.7;
+  letter-spacing:.02em;color:rgba(255,255,255,.95);
+  text-shadow:0 1px 16px rgba(0,0,0,.7);
   transition:opacity .45s ease;
 }
 .fv__cap.is-out{opacity:0}
 .fv__scrim{
   position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(to bottom,
-    rgba(20,21,22,.30) 0%,
-    rgba(20,21,22,0)   26%,
+    rgba(20,21,22,.46) 0%,
+    rgba(20,21,22,0)   24%,
     rgba(20,21,22,.12) 44%,
     rgba(20,21,22,.74) 72%,
     rgba(20,21,22,.93) 100%);
@@ -167,6 +168,26 @@ table{border-collapse:collapse;width:100%}
 .fv__lead{font-size:14.5px;line-height:1.95;color:rgba(255,255,255,.86);text-wrap:pretty;text-shadow:0 1px 14px rgba(0,0,0,.34)}
 .fv__cta{display:flex;flex-direction:column;gap:10px;order:3}
 .fv__cta .note{text-align:left;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+
+.fvtrust{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  margin-top:24px;padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.22);
+}
+.fvtrust li{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  gap:7px;padding-inline:4px;text-align:center;
+}
+.fvtrust li + li{border-left:1px solid rgba(255,255,255,.16)}
+.fvtrust svg{
+  width:20px;height:20px;fill:none;
+  stroke:var(--accent-light);stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.fvtrust p{
+  font-size:11px;line-height:1.65;color:rgba(255,255,255,.84);
+  text-shadow:0 1px 10px rgba(0,0,0,.5);
+}
 .eyebrow--on-media{color:rgba(255,255,255,.9);text-shadow:0 1px 14px rgba(0,0,0,.6)}
 .eyebrow--on-media .eyebrow__rule{background:var(--accent-light)}
 
@@ -483,14 +504,14 @@ table{border-collapse:collapse;width:100%}
   .logo{font-size:26px}
 
   /* FV : full-bleed hero */
-  .fv{height:auto;min-height:0;max-height:none;aspect-ratio:16/9;max-block-size:680px}
+  .fv{width:100%;height:clamp(560px,62vw,720px);min-height:0;max-height:none}
   .fv__bg{object-position:center 32%}
   .fv__bg--still{object-position:center 96%}
-  .fv__cap{padding:20px calc((100vw - var(--wrap))/2 + var(--pad));font-size:12.5px}
+  .fv__cap{padding:34px var(--pad);font-size:19px}
   .fv__scrim{
     background:linear-gradient(to bottom,
-      rgba(20,21,22,.28) 0%,
-      rgba(20,21,22,0)   26%,
+      rgba(20,21,22,.46) 0%,
+      rgba(20,21,22,0)   24%,
       rgba(20,21,22,.60) 58%,
       rgba(20,21,22,.90) 100%);
   }
@@ -503,6 +524,14 @@ table{border-collapse:collapse;width:100%}
   .fv__h1{font-size:38px;line-height:1.42}
   .fv__lead{font-size:16px;max-width:480px}
   .fv__cta{order:3;align-items:flex-start}
+  .fvtrust{
+    grid-template-columns:repeat(3,auto);justify-content:start;
+    margin-top:30px;padding-top:20px;border-top:0;
+  }
+  .fvtrust li{flex-direction:row;align-items:center;gap:10px;padding-inline:0;text-align:left}
+  .fvtrust li + li{border-left:0;margin-left:28px;padding-left:28px;border-left:1px solid rgba(255,255,255,.18)}
+  .fvtrust svg{width:22px;height:22px;flex:0 0 auto}
+  .fvtrust p{font-size:12.5px}
   .btn--lg{padding-inline:40px}
 
   .trust__in{max-width:var(--wrap)}
