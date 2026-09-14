@@ -88,23 +88,37 @@
   }
 
   /* ----------------------------------------------------
-     2b. drawer video  (plays once, on view, then stays open)
+     2b. drawer video
+         画面に入るたびに頭から1回再生し、開いたところで止まる。
+         自動再生が拒否された端末（iOSの低電力モードなど）では
+         タップで再生できるようにする。
      ---------------------------------------------------- */
   var drawer = document.getElementById('drawerVideo');
   if (drawer) {
+    var drawerSeen = false;
+
+    var playDrawer = function () {
+      try { drawer.currentTime = 0; } catch (e) {}
+      var pr = drawer.play();
+      if (pr && pr.catch) {
+        pr.catch(function () { drawer.setAttribute('controls', ''); });
+      }
+      if (!drawerSeen) { drawerSeen = true; dl.push({ event: 'view_drawer' }); }
+    };
+
+    drawer.addEventListener('click', function () {
+      if (drawer.paused) playDrawer();
+    });
+
     if (!('IntersectionObserver' in window)) {
-      var p0 = drawer.play(); if (p0) p0.catch(function () {});
+      playDrawer();
     } else {
       var dIo = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            var pr = drawer.play();
-            if (pr) pr.catch(function () {});
-            dIo.disconnect();
-            dl.push({ event: 'view_drawer' });
-          }
+          if (e.isIntersecting) { playDrawer(); }
+          else if (!drawer.paused) { drawer.pause(); }
         });
-      }, { threshold: 0.4 });
+      }, { threshold: 0.35 });
       dIo.observe(drawer);
     }
   }
