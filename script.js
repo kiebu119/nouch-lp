@@ -26,6 +26,47 @@
   }
 
   /* ----------------------------------------------------
+     1b. FV  動画 → 静止画（跡）を交互に
+     ---------------------------------------------------- */
+  var fv    = document.querySelector('.fv');
+  var fvVid = document.getElementById('fvVideo');
+  var fvCap = document.getElementById('fvCap');
+  var CAP_V = '何度も直している。';
+  var CAP_S = '外したあと。';
+  var STILL_MS = 3200;
+
+  if (fv && fvVid) {
+    if (reduce) {
+      // 動きを減らす設定の人には、切り替えずに跡の写真だけ
+      fv.classList.add('is-still');
+      if (fvCap) fvCap.textContent = CAP_S;
+      fvVid.removeAttribute('autoplay');
+      fvVid.pause();
+    } else {
+      var swapCap = function (t) {
+        if (!fvCap) return;
+        fvCap.classList.add('is-out');
+        setTimeout(function () {
+          fvCap.textContent = t;
+          fvCap.classList.remove('is-out');
+        }, 450);
+      };
+
+      fvVid.addEventListener('ended', function () {
+        fv.classList.add('is-still');
+        swapCap(CAP_S);
+        setTimeout(function () {
+          fv.classList.remove('is-still');
+          swapCap(CAP_V);
+          fvVid.currentTime = 0;
+          var p = fvVid.play();
+          if (p) p.catch(function () {});
+        }, STILL_MS);
+      });
+    }
+  }
+
+  /* ----------------------------------------------------
      2. fit-switch animation  (plays once, on view)
      ---------------------------------------------------- */
   var sw = document.getElementById('switch');
@@ -149,12 +190,13 @@
      7. pause background video when off-screen
         (saves battery on mobile)
      ---------------------------------------------------- */
-  var bgVideos = document.querySelectorAll('.solution__bg, .final__bg, .fv__video');
+  var bgVideos = document.querySelectorAll('.solution__bg, .final__bg, video.fv__bg');
   if ('IntersectionObserver' in window) {
     var vIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         var v = e.target;
         if (e.isIntersecting) {
+          if (v.id === 'fvVideo' && fv && fv.classList.contains('is-still')) return;
           if (v.paused) { var p = v.play(); if (p) p.catch(function () {}); }
         } else if (!v.paused) {
           v.pause();

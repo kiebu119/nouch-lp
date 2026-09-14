@@ -60,23 +60,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ FV ============ -->
 <section class="fv">
+  <video class="fv__bg" id="fvVideo" src="fv-fit.mp4" poster="fv-poster.jpg"
+         autoplay muted playsinline preload="metadata"
+         aria-label="いま使っているゴーグルを着けて、指で何度も位置を直している"></video>
+  <picture>
+    <source media="(min-width:768px)" srcset="mark.jpg">
+    <img class="fv__bg fv__bg--still" id="fvStill" src="mark-sp.jpg"
+         alt="ゴーグルを外したあと、目のまわりに残った跡">
+  </picture>
+  <span class="fv__scrim" aria-hidden="true"></span>
+  <p class="fv__cap" id="fvCap">何度も直している。</p>
   <div class="wrap fv__in">
     <div class="fv__copy">
-      <p class="eyebrow"><span class="eyebrow__rule"></span>90-DAY FIT GUARANTEE</p>
+      <p class="eyebrow eyebrow--on-media"><span class="eyebrow__rule"></span>90-DAY FIT GUARANTEE</p>
       <h1 class="fv__h1">「次こそ合うかな」を、<br>終わりに。</h1>
       <p class="fv__lead">子どものスイミングゴーグルは、買う前に合うかどうかが分かりません。だから nouch は、合うまでを商品にしました。</p>
       <div class="fv__cta">
-        <a class="btn btn--lg" href="order.html" data-cta="fv">うちの子に合うFitを選ぶ</a>
-        <p class="note note--center">$38 ／ 3〜12歳 ／ 合わなければ無料で交換</p>
+        <a class="btn btn--lg btn--white" href="order.html" data-cta="fv">うちの子に合うFitを選ぶ</a>
+        <p class="note note--light">$38 ／ 3〜12歳 ／ 合わなければ無料で交換</p>
       </div>
     </div>
-    <figure class="fv__media">
-      <video class="fv__video" src="fv-fit.mp4" poster="fv-poster.jpg"
-             autoplay muted loop playsinline preload="metadata"
-             aria-label="いま使っているゴーグルを着けて、指で何度も位置を直している"></video>
-      <img class="fv__mark" src="mark.jpg" alt="ゴーグルを外したあと、目のまわりに残った跡">
-      <figcaption class="caption">何度も直して、外したあと。</figcaption>
-    </figure>
   </div>
 </section>
 
